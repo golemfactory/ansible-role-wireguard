@@ -8,6 +8,6 @@ Supports:
   - P2P connections or routing through other nodes
   - Automatic PersistentKeepalive for peers without endpoint IP.
 
-See: [rather complete example](tests/rather_complete_example/network.yml).
+See: [rather complete example](gen_wireguard/tests/rather_complete_example/network.yml).
 
 Useful IPv6 private address range generator: https://simpledns.plus/private-ipv6
