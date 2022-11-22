@@ -1,0 +1,41 @@
+[Interface]
+# phone
+Address = 10.0.1.11/24, fdeb:ad98:e9dd:d874::b/64
+ListenPort = 13152
+PrivateKey = 8JqhOOeICJt3PRvJScHfUbV2N7YzZOlIKk6ulIAta2I=
+# PublicKey = jtLO9xbxCgMIe2KYsQrLrv9awaN0akEb9nVrblK0b3U=
+Table = off
+PostUp = ip r add 10.0.2.0/24 dev wg0 src 10.0.1.11
+PreDown = ip r del 10.0.2.0/24 dev wg0 src 10.0.1.11
+PostUp = ip r add fdeb:ad98:e9dd:d875::/64 dev wg0 src fdeb:ad98:e9dd:d874::b
+PreDown = ip r del fdeb:ad98:e9dd:d875::/64 dev wg0 src fdeb:ad98:e9dd:d874::b
+
+[Peer]
+# internet_host_a
+PublicKey = ncjVbkRl0hfDcWE013raUPV3EFuC883eLkdc0S27ISM=
+Endpoint = 1.1.1.1:11144
+PresharedKey = ksrmIXJSN3K1ZbAz971tmeW/fRcB8FM3JaMrYPbBEzs=
+AllowedIPs = 10.0.1.1/32, fdeb:ad98:e9dd:d874::1/128, 10.0.1.10/32, fdeb:ad98:e9dd:d874::a/128, 10.0.1.42/32, fdeb:ad98:e9dd:d874::2a/128
+PersistentKeepalive = 60
+
+[Peer]
+# internet_host_b
+PublicKey = 0MIcmOYyEZcO0VyQkYkqcenKeHwDYWW5V9qOEMBEcC0=
+Endpoint = 2.2.2.2:14874
+PresharedKey = GgVVFGx5xk5bdWV3K5Jt4KM8Ggqylzb0DjlrAXc4u7k=
+AllowedIPs = 10.0.1.2/32, fdeb:ad98:e9dd:d874::2/128
+PersistentKeepalive = 60
+
+[Peer]
+# internet_host_c
+PublicKey = KdbkZrdv48Bqbf8SHWRBXA8kmQJtcgaz7F38w4CdwAE=
+Endpoint = 3.3.3.3:28822
+PresharedKey = LXz4zfCplCaFY9KBdm6aDPD1U5x/fHbohgs3M86+ye0=
+AllowedIPs = 10.0.1.3/32, fdeb:ad98:e9dd:d874::3/128
+PersistentKeepalive = 60
+
+# laptop 10.0.1.10 via internet_host_a
+
+# phone 10.0.1.11 it's me
+
+# home_router 10.0.1.42 via internet_host_a

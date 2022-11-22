@@ -1,0 +1,54 @@
+peers:
+  peer_a:
+    private_key: IFF85pFHPvin3Zf+nfpIuzj97M4BmiwyBAhjgYHHIFQ=
+    listen_port: 19753
+  peer_b:
+    private_key: CP8n05Zg8svkwMJoeIiDcyqxcIFahywffh7o5DjJJUw=
+    listen_port: 12253
+  peer_c:
+    private_key: oDbfsm9a9/7BP9QJ2wd0I6ioyMh3UparMVrYBF3ma04=
+    listen_port: 8359
+  peer_d:
+    private_key: GMcLb0/XovMELjQaC9zW1d5XF3K8w3RekhO3cQHshmM=
+    listen_port: 25052
+subnets:
+  - ipv4_network: 10.0.0.0/24
+    peers:
+      peer_a:
+        num: 1
+        endpoint_ip: 192.168.1.100
+      peer_b:
+        num: 2
+        endpoint_ip: 192.168.1.101
+      peer_c:
+        num: 3
+        endpoint_ip: 192.168.1.102
+    connections:
+      peer_a:
+        peer_b:
+          psk: ThWTbw3TjwPbtLZDDAQn47ptmDTdxU1Qv1m4S7OSnd8=
+        peer_c:
+          psk: qqI6J57LGLWmsxgFvsk/0nix5U8AVgsrmWbA3Csrjlw=
+      peer_b:
+        peer_c:
+          psk: rb8msUEHJNIwhlpJspQv6ysUP6VrS9ItMzwD6FoHSJw=
+  - ipv4_network: 10.0.1.0/24
+    peers:
+      peer_a:
+        num: 1
+        endpoint_ip: 192.168.2.100
+      peer_b:
+        num: 2
+        endpoint_ip: 192.168.2.101
+      peer_d:
+        num: 4
+        endpoint_ip: 192.168.2.104
+    connections:
+      peer_a:
+        peer_b:
+          psk: c6rntTxvc/7W9KX4fJhoMnlxdzFM8o5OnCX9FubW8Iw=
+        peer_d:
+          psk: 1+KWT1zPK+8Nmy0ZUjndUl076g/tnY+izV3+Hjx+FSA=
+      peer_b:
+        peer_d:
+          psk: a+LTWo1JULflFcxvh2AePZYpL0ao75X+pYVJ3+b4Hlc=

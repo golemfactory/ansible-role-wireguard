@@ -1,0 +1,5 @@
+[Main]
+disable=missing-module-docstring,missing-function-docstring,missing-class-docstring,too-many-instance-attributes,too-many-arguments,too-many-locals,too-many-branches,too-many-statements
+
+[Basic]
+good-names=me

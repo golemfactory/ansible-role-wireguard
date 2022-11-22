@@ -1,0 +1,103 @@
+peers:
+  internet_host_a:
+    private_key: aLon0VoQp4JvSjKeq4ZYlvjz5cEHpoP/QDEVdwr6x0o=
+    listen_port: 11144
+  internet_host_b:
+    private_key: cAZSY4Si3jPCL3h9oitePhQl+GAPOpceQCShDKUt3EY=
+    listen_port: 14874
+  internet_host_c:
+    private_key: yM4xVq8fc4c87+Py/rlV2I0qZjy67Y0UIimYGdG2W3U=
+    listen_port: 28822
+  laptop:
+    private_key: iHFtSnFpvfpHcIUumH8gqqtuOcUHU9FhW+sfdmfQ8Hw=
+    listen_port: 10035
+  phone:
+    private_key: 8JqhOOeICJt3PRvJScHfUbV2N7YzZOlIKk6ulIAta2I=
+    listen_port: 13152
+  home_router:
+    private_key: 8D+vqKxSWcUGRbmrH1kOlZLwQYOAv+oBHJaTiahMLW8=
+    listen_port: 32740
+    hide_from_etc_hosts: yes
+  home_computer_a:
+    private_key: sCeUXIYswWibbh9AwIXY4gs4K22QvOsZDxmsA/Zwems=
+    listen_port: 9684
+  home_computer_b:
+    private_key: wPBFv78HH2RIRQsxB3u0zzO8RLUi/7VxL4cd61eIsmc=
+    listen_port: 14684
+subnets:
+  - ipv4_network: 10.0.1.0/24
+    ipv6_network: fdeb:ad98:e9dd:d874::/64
+    peers:
+      internet_host_a:
+        num: 1
+        endpoint_ip: 1.1.1.1
+      internet_host_b:
+        num: 2
+        endpoint_ip: 2.2.2.2
+      internet_host_c:
+        num: 3
+        endpoint_ip: 3.3.3.3
+      laptop:
+        num: 10
+      phone:
+        num: 11
+      home_router:
+        num: 42
+    connections:
+      internet_host_a:
+        internet_host_b:
+          psk: 6zSbG/4TkrGcZXSuZPm4s1CLk7PDD/7LjZf7MV8C0Es=
+        internet_host_c:
+          psk: 7ymT/ZquGByTb9k2aT0N1s3lxVuakIHjKo5/90xCeXY=
+        laptop:
+          psk: qza7Fam/JN7nTqjT1iVG4URNeocNcqpEpJeWEbrCjTE=
+        phone:
+          psk: ksrmIXJSN3K1ZbAz971tmeW/fRcB8FM3JaMrYPbBEzs=
+        home_router:
+          psk: l0vmjvJ7EBrkDbEjeo8kbuAJORYBCaHsoJr7i6WqQoo=
+      internet_host_b:
+        internet_host_c:
+          psk: NS9VX6pW7ZkfvYEoYrn+J+FLiI1vLHfQDraT3mAzffs=
+        laptop:
+          psk: JIfolSf5YgUQDQZf5Zr5WAoa45bmCFDnQBjXGXhBzAk=
+        phone:
+          psk: GgVVFGx5xk5bdWV3K5Jt4KM8Ggqylzb0DjlrAXc4u7k=
+        home_router:
+          psk: KFRWIKzOWgBspC1OojWlEtH3rIOJ56UJoVnn3IWAyLE=
+      internet_host_c:
+        laptop:
+          psk: era12OwhscV42LkleYXfxduo3BE5HoHGe06LGWvzlUM=
+        phone:
+          psk: LXz4zfCplCaFY9KBdm6aDPD1U5x/fHbohgs3M86+ye0=
+        home_router:
+          psk: qSTTXTe+mOJvrjImo7kYVK4p02B1F1zsw+kZf/pnmto=
+      laptop:
+        phone:
+          via: internet_host_a
+        home_router:
+          via: internet_host_a
+      phone:
+        home_router:
+          via: internet_host_a
+
+  - ipv4_network: 10.0.2.0/24
+    ipv6_network: fdeb:ad98:e9dd:d875::/64
+    peers:
+      home_router:
+        num: 1
+        endpoint_ip: 192.168.1.1
+      home_computer_a:
+        num: 2
+        endpoint_ip: 192.168.1.102
+      home_computer_b:
+        num: 3
+        endpoint_ip: 192.168.1.103
+    connections:
+      home_router:
+        home_computer_a:
+          psk: x/i/UkmDlSMARcXq62g1fE90yYJFalhQf4OECX1+NYo=
+        home_computer_b:
+          psk: xuRDWWXi5apPXpczTVOQO6CKHAYOSkKaA/oZLxkL3ng=
+      home_computer_a:
+        home_computer_b:
+          psk: aoygbL4Ic7qXafOdSQq0E5iKoIbiW8iL8tcM6UrQBJE=

@@ -1,0 +1,17 @@
+peers:
+  peer_a:
+    private_key: YIM9reMmlVRQ8yo76r+FJaQlDwOfriM64b0P8Q6qUUk=
+    listen_port: 26937
+subnets:
+  - ipv4_network: 10.0.0.0/23
+    peers:
+      peer_a:
+        num: 1
+        endpoint_ip: 192.168.1.100
+    connections: {}
+  - ipv4_network: 10.0.1.0/24
+    peers:
+      peer_a:
+        num: 2
+        endpoint_ip: 192.168.1.101
+    connections: {}

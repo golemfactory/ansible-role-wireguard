@@ -1,0 +1,20 @@
+peers:
+  peer_a:
+    private_key: YIM9reMmlVRQ8yo76r+FJaQlDwOfriM64b0P8Q6qUUk=
+    listen_port: 26937
+  peer_b:
+    private_key: oPliTHIKkdGV0Vl2DH9V6eszAvM7SWSmxB0HgQo5q1Y=
+    listen_port: 16086
+subnets:
+  - ipv4_network: 10.0.0.0/24
+    peers:
+      peer_a:
+        num: 1
+        endpoint_ip: 192.168.1.100
+      peer_b:
+        num: 2
+        endpoint_ip: 192.168.1.101
+    connections:
+      peer_a:
+        peer_b:
+          psk: gbqieljMasaAKHnjFpwfDKJmCJ2yHBeFRyZvY3moogc=

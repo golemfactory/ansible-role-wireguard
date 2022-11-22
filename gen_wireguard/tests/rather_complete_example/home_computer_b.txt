@@ -1,0 +1,28 @@
+[Interface]
+# home_computer_b
+Address = 10.0.2.3/24, fdeb:ad98:e9dd:d875::3/64
+ListenPort = 14684
+PrivateKey = wPBFv78HH2RIRQsxB3u0zzO8RLUi/7VxL4cd61eIsmc=
+# PublicKey = ZLPDDisQ8FropQPWrhyBTI/UYxMh5OQeqhFKNINBzkE=
+# Endpoint = 192.168.1.103:14684
+Table = off
+PostUp = ip r add 10.0.1.0/24 dev wg0 src 10.0.2.3
+PreDown = ip r del 10.0.1.0/24 dev wg0 src 10.0.2.3
+PostUp = ip r add fdeb:ad98:e9dd:d874::/64 dev wg0 src fdeb:ad98:e9dd:d875::3
+PreDown = ip r del fdeb:ad98:e9dd:d874::/64 dev wg0 src fdeb:ad98:e9dd:d875::3
+
+[Peer]
+# home_router
+PublicKey = G/PtsWIXMUswC1fUZX6EIvbIyvFOS9fza/YhlKb/sEs=
+Endpoint = 192.168.1.1:32740
+PresharedKey = xuRDWWXi5apPXpczTVOQO6CKHAYOSkKaA/oZLxkL3ng=
+AllowedIPs = 10.0.2.1/32, fdeb:ad98:e9dd:d875::1/128, 10.0.1.0/24, fdeb:ad98:e9dd:d874::/64
+
+[Peer]
+# home_computer_a
+PublicKey = ez6nnuEtij/ojhzIg2yG4s8sExGT2LnkfYxIruIM50c=
+Endpoint = 192.168.1.102:9684
+PresharedKey = aoygbL4Ic7qXafOdSQq0E5iKoIbiW8iL8tcM6UrQBJE=
+AllowedIPs = 10.0.2.2/32, fdeb:ad98:e9dd:d875::2/128
+
+# home_computer_b 10.0.2.3 it's me

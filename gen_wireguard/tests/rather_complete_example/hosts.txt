@@ -1,0 +1,14 @@
+10.0.1.1 internet_host_a
+10.0.1.2 internet_host_b
+10.0.1.3 internet_host_c
+10.0.1.10 laptop
+10.0.1.11 phone
+10.0.2.2 home_computer_a
+10.0.2.3 home_computer_b
+fdeb:ad98:e9dd:d874::1 internet_host_a
+fdeb:ad98:e9dd:d874::2 internet_host_b
+fdeb:ad98:e9dd:d874::3 internet_host_c
+fdeb:ad98:e9dd:d874::a laptop
+fdeb:ad98:e9dd:d874::b phone
+fdeb:ad98:e9dd:d875::2 home_computer_a
+fdeb:ad98:e9dd:d875::3 home_computer_b

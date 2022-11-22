@@ -1,0 +1,18 @@
+# should fail because one subnet has only ipv4 and other only ipv6
+peers:
+  peer_a:
+    private_key: YIM9reMmlVRQ8yo76r+FJaQlDwOfriM64b0P8Q6qUUk=
+    listen_port: 26937
+subnets:
+  - ipv4_network: 10.0.0.0/24
+    peers:
+      peer_a:
+        num: 1
+        endpoint_ip: 192.168.1.100
+    connections: {}
+  - ipv6_network: fd4a:1802:3f09:37b1::/64
+    peers:
+      peer_a:
+        num: 1
+        endpoint_ip: 192.168.2.100
+    connections: {}
