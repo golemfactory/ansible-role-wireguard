@@ -1,3 +1,4 @@
+mtu: 1280
 peers:
   internet_host_a:
     private_key: aLon0VoQp4JvSjKeq4ZYlvjz5cEHpoP/QDEVdwr6x0o=

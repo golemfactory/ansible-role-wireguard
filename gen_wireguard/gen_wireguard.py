@@ -194,6 +194,7 @@ class Subnet:
 
 class Network:
     def __init__(self) -> None:
+        self.mtu: Optional[int] = None
         self.subnets: Set[Subnet] = set()
         self.peers: Dict[str, Peer] = {}
 
@@ -229,7 +230,7 @@ def validate_network(network: Network) -> None:
 
             if subnet in peer1.endpoints and subnet in peer2.endpoints \
                and not isinstance(connection, Direct):
-                print("Connection between {peer1.name} and {peer2.name} could be Direct")
+                print(f"Connection between {peer1.name} and {peer2.name} could be Direct")
 
             if subnet not in peer1.endpoints and subnet not in peer2.endpoints:
                 assert isinstance(connection, Peer)
@@ -286,6 +287,8 @@ def build_wg_quick_conf(me: Peer) -> str:
     for endpoint in sorted(me.endpoints.values()):
         config += f"# Endpoint = {endpoint}:{me.listen_port}\n"
     config += "Table = off\n"
+    if me.network.mtu is not None:
+        config += f"MTU = {me.network.mtu}\n"
 
     for subnet in me.indirect_subnets():
         for ipvx, ipvx_network in [
@@ -393,6 +396,9 @@ def test_get_public_key() -> None:
 
 def parse_network_description(data: Any) -> Network:
     network = Network()
+
+    if "mtu" in data:
+        network.mtu = int(data["mtu"])
 
     for peer_name, peer_config in data["peers"].items():
         Peer(

@@ -5,6 +5,7 @@ ListenPort = 13152
 PrivateKey = 8JqhOOeICJt3PRvJScHfUbV2N7YzZOlIKk6ulIAta2I=
 # PublicKey = jtLO9xbxCgMIe2KYsQrLrv9awaN0akEb9nVrblK0b3U=
 Table = off
+MTU = 1280
 PostUp = ip r add 10.0.2.0/24 dev wg0 src 10.0.1.11
 PreDown = ip r del 10.0.2.0/24 dev wg0 src 10.0.1.11
 PostUp = ip r add fdeb:ad98:e9dd:d875::/64 dev wg0 src fdeb:ad98:e9dd:d874::b

@@ -6,6 +6,7 @@ PrivateKey = 8D+vqKxSWcUGRbmrH1kOlZLwQYOAv+oBHJaTiahMLW8=
 # PublicKey = G/PtsWIXMUswC1fUZX6EIvbIyvFOS9fza/YhlKb/sEs=
 # Endpoint = 192.168.1.1:32740
 Table = off
+MTU = 1280
 
 [Peer]
 # internet_host_a

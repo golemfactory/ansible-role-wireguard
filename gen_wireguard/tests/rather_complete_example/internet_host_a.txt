@@ -6,6 +6,7 @@ PrivateKey = aLon0VoQp4JvSjKeq4ZYlvjz5cEHpoP/QDEVdwr6x0o=
 # PublicKey = ncjVbkRl0hfDcWE013raUPV3EFuC883eLkdc0S27ISM=
 # Endpoint = 1.1.1.1:11144
 Table = off
+MTU = 1280
 PostUp = ip r add 10.0.2.0/24 dev wg0 src 10.0.1.1
 PreDown = ip r del 10.0.2.0/24 dev wg0 src 10.0.1.1
 PostUp = ip r add fdeb:ad98:e9dd:d875::/64 dev wg0 src fdeb:ad98:e9dd:d874::1
