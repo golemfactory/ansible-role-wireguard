@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: wireguard
   author: Adam Mizerski
   description: your role description
 
