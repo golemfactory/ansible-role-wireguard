@@ -42,6 +42,7 @@ Playbook:
   roles: [wireguard]
 ```
 
+
 ## License
 
 [GPL-3.0-or-later](COPYING.txt)

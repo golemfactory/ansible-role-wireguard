@@ -1,7 +1,7 @@
 galaxy_info:
   role_name: wireguard
   author: Adam Mizerski
-  description: your role description
+  description: Build a VPN, that allows for direct connection between multiple hosts, even if some of them are firewalls and routers.
 
   issue_tracker_url: https://codeberg.org/etam/ansible-role-wireguard/issues
 
