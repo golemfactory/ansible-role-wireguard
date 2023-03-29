@@ -1,0 +1,36 @@
+peers:
+  server:
+    private_key: SES/e5FjTCQWvs3+/Ng02MWawDqSSnSakV7lx2vInmw=
+    listen_port: 20495
+  peer_a:
+    private_key: YIM9reMmlVRQ8yo76r+FJaQlDwOfriM64b0P8Q6qUUk=
+    listen_port: 26937
+  peer_b:
+    private_key: oPliTHIKkdGV0Vl2DH9V6eszAvM7SWSmxB0HgQo5q1Y=
+    listen_port: 16086
+  peer_c:
+    private_key: cGk6PfUsgUgT0BjswpDfqU+mAaah30YnJ2e2n/HORl8=
+    listen_port: 9809
+subnets:
+  - ipv4_network: 10.0.0.0/24
+    peers:
+      server:
+        num: 1
+        endpoint_ip: 192.168.1.1
+      peer_a:
+        num: 101
+        endpoint_ip: 192.168.1.101
+      peer_b:
+        num: 102
+        endpoint_ip: 192.168.1.102
+      peer_c:
+        num: 103
+        endpoint_ip: 192.168.1.103
+    connections:
+      server:
+        peer_a:
+          psk: op5J6/Z86QwtKxrMA+t7QNFZ757Hb1ubq1TGeqnNiiQ=
+        peer_b:
+          psk: eDlI3pdJ/ZM7PpxD7Y+hCu/m/imb822NUoTkQSgumwY=
+        peer_c:
+          psk: p87PppXMJTWAPfsa1xLlErzKrToGJJooLnA3z0kN5eQ=

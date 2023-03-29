@@ -1,0 +1,17 @@
+[Interface]
+# peer_b
+Address = 10.0.0.102/24
+ListenPort = 16086
+PrivateKey = oPliTHIKkdGV0Vl2DH9V6eszAvM7SWSmxB0HgQo5q1Y=
+# PublicKey = xn8S4QHqth65tB6NCmh/L6lHVhz4zcsijzQVy+vhyAY=
+# Endpoint = 192.168.1.102:16086
+Table = off
+
+[Peer]
+# server
+PublicKey = pNs3TzTKUFzeGV9TNapx5Y7+cukUBWH06iZLUkfuUnU=
+Endpoint = 192.168.1.1:20495
+PresharedKey = eDlI3pdJ/ZM7PpxD7Y+hCu/m/imb822NUoTkQSgumwY=
+AllowedIPs = 10.0.0.1/32
+
+# peer_b 10.0.0.102 it's me

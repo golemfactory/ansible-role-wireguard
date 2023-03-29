@@ -1,0 +1,31 @@
+[Interface]
+# server
+Address = 10.0.0.1/24
+ListenPort = 20495
+PrivateKey = SES/e5FjTCQWvs3+/Ng02MWawDqSSnSakV7lx2vInmw=
+# PublicKey = pNs3TzTKUFzeGV9TNapx5Y7+cukUBWH06iZLUkfuUnU=
+# Endpoint = 192.168.1.1:20495
+Table = off
+
+# server 10.0.0.1 it's me
+
+[Peer]
+# peer_a
+PublicKey = CWPolktJEwBRdFfLcZlcT83hqld2Og5OL2UP95Gn8yI=
+Endpoint = 192.168.1.101:26937
+PresharedKey = op5J6/Z86QwtKxrMA+t7QNFZ757Hb1ubq1TGeqnNiiQ=
+AllowedIPs = 10.0.0.101/32
+
+[Peer]
+# peer_b
+PublicKey = xn8S4QHqth65tB6NCmh/L6lHVhz4zcsijzQVy+vhyAY=
+Endpoint = 192.168.1.102:16086
+PresharedKey = eDlI3pdJ/ZM7PpxD7Y+hCu/m/imb822NUoTkQSgumwY=
+AllowedIPs = 10.0.0.102/32
+
+[Peer]
+# peer_c
+PublicKey = PnvVsv5yqfhR3TJaFZcijfrvgq+2kfew08prqal8clM=
+Endpoint = 192.168.1.103:9809
+PresharedKey = p87PppXMJTWAPfsa1xLlErzKrToGJJooLnA3z0kN5eQ=
+AllowedIPs = 10.0.0.103/32

@@ -13,11 +13,11 @@ from gen_wireguard import (
 )
 
 
-def run_directory_test(path: Path) -> None:
+def run_directory_test(path: Path, full: bool = True) -> None:
     with (path/"network.yml").open() as file:
         network = parse_network_description(yaml.safe_load(file))
 
-    validate_network(network)
+    validate_network(network, full)
 
     with (path/"hosts.txt").open() as file:
         expected_hosts = file.read()
@@ -39,6 +39,10 @@ def test_just_ipv6() -> None:
 
 def test_rather_complete_example() -> None:
     run_directory_test(Path("tests/rather_complete_example"))
+
+
+def test_not_full() -> None:
+    run_directory_test(Path("tests/not_full"), full=False)
 
 
 def run_should_fail_test(path: Path) -> None:
