@@ -83,8 +83,11 @@ class Peer:
 
     def sorted_peers(self) -> Iterable[Tuple[int, 'Peer', 'Subnet']]:
         for subnet in self.subnets:
+            my_num = subnet.get_peer_num(self)
             for peer_num in sorted(subnet.peers):
-                yield (peer_num, subnet.peers[peer_num], subnet)
+                if peer_num == my_num \
+                       or sorted_tuple((my_num, peer_num)) in subnet.connections:
+                    yield (peer_num, subnet.peers[peer_num], subnet)
 
 
 def get_ipv4(subnet: IPv4Network, num: int) -> IPv4Address:
@@ -173,13 +176,13 @@ class Subnet:
         assert key not in self.connections
         self.connections[key] = conn
 
-    def get_connection(self, peer1: Peer, peer2: Peer) -> Connection:
-        return self.connections[
+    def get_connection(self, peer1: Peer, peer2: Peer) -> Optional[Connection]:
+        return self.connections.get(
             sorted_tuple((
                 self.get_peer_num(peer1),
                 self.get_peer_num(peer2)
             ))
-        ]
+        )
 
     def get_connections_of_peer(self, peer: Peer) -> Dict[int, Connection]:
         peer_num = self.get_peer_num(peer)
@@ -212,7 +215,7 @@ class Network:
         self.peers[peer.name] = peer
 
 
-def validate_network(network: Network) -> None:
+def validate_network(network: Network, full: bool = True) -> None:
     # All peers belong to some subnets.
     for peer in network.peers.values():
         peer_subnets = set(peer.subnets.keys())
@@ -221,12 +224,15 @@ def validate_network(network: Network) -> None:
 
     for subnet in network.subnets:
         # In a subnet all peers are connected to each other.
-        expected_connections = list(itertools.combinations(sorted(subnet.peers.keys()), 2))
-        actual_connections = list(sorted(subnet.connections.keys()))
-        assert expected_connections == actual_connections
+        if full:
+            expected_connections = list(itertools.combinations(sorted(subnet.peers.keys()), 2))
+            actual_connections = list(sorted(subnet.connections.keys()))
+            assert expected_connections == actual_connections
 
         for peer1, peer2 in itertools.combinations(subnet.peers.values(), 2):
             connection = subnet.get_connection(peer1, peer2)
+            if not full and connection is None:
+                continue
 
             if subnet in peer1.endpoints and subnet in peer2.endpoints \
                and not isinstance(connection, Direct):
@@ -325,6 +331,7 @@ def build_wg_quick_conf(me: Peer) -> str:
             continue
 
         connection = peer_subnet.get_connection(me, peer)
+        assert connection is not None  # guaranteed by sorted_peers
         if isinstance(connection, Peer):
             config += f"# {peer.name} {peer_ipv4} via {connection.name}\n"
             continue
@@ -451,6 +458,9 @@ def parse_args():
         type=Path,
         default=Path("wireguard_conf"),
     )
+    parser.add_argument(
+        '--full',
+        action=argparse.BooleanOptionalAction)
     return parser.parse_args()
 
 
@@ -461,7 +471,7 @@ def main() -> None:
         network_description = yaml.safe_load(file)
 
     network = parse_network_description(network_description)
-    validate_network(network)
+    validate_network(network, args.full)
 
     args.output_dir.mkdir(mode=0o700, parents=True, exist_ok=True)
 
